@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const tokenService = require('./token-service')
 const UserDto = require('../dtos/uset-dto')
 const ApiError = require('../exceptions/api-error')
+const botService = require('./bot-service')
 
 class UserService {
   async registration(username, password) {
@@ -55,6 +56,11 @@ class UserService {
 
     await tokenService.saveToken(userDto.id, tokens.refreshToken)
     return {...tokens, user: userDto}
+  }
+
+  async createBot(options) {
+    const bot = await botService.createBot(options)
+    return bot
   }
 }
 

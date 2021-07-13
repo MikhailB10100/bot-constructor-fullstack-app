@@ -50,6 +50,16 @@ class UserController {
         next (e)
     }
   }
+
+  async createBot(req, res, next) {
+    try {
+      const bot = req.body
+      const botData = await userService.createBot(bot)
+      return res.json(botData)
+    } catch (e) {
+        next (e)
+    }
+  }
 }
 
 module.exports = new UserController()

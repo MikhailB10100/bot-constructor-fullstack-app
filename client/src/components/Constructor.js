@@ -6,7 +6,9 @@ const LoginForm = () => {
   const {store} = useContext(Context)
 
   return (
-    <div>Hello, world!</div>
+    <div>Hello, world!
+      <button onClick={() => store.logout()}>Logout</button>
+    </div>
   )
 }
 
